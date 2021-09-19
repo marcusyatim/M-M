@@ -1,0 +1,89 @@
+##### exp1:
+
+- Added a few stopwords (refer to ./stopwords/exp1.txt).
+- Removed all punctuations, numbers and tokens with word length <3.
+- text = text.replace("-","") is used to remove time stamps, e.g. 15-20 minutes, because the tokenisation separates
+  '15-20' as a token and then this cannot be captured under string.punctuation and isnumeric(). (Or should we leave this in?)
+
+def pre_process(text):
+    text = text.replace("'","")
+    text = text.replace("-","")
+    tokens = nltk.word_tokenize(text)
+    tokens = [ t for t in tokens if t not in string.punctuation+"’“”'" ]
+    tokens = [ t for t in tokens if not t.isnumeric() ]
+    tokens = [ WNlemma.lemmatize(t.lower()) for t in tokens ]
+    tokens = [ t for t in tokens if t not in mystopwords ]
+    tokens = [ t for t in tokens if len(t) >= 3 ]
+    return(tokens)
+
+- Filter off any words with document frequency less than 2, or appearing in more than 80% documents.
+- Too low?
+dictionary.filter_extremes(no_below=2, no_above=0.8)
+
+Dictionary(50614 unique tokens: ['aluminum', 'bake', 'baking', 'burn', 'butter']...)
+Dictionary(22035 unique tokens: ['aluminum', 'bake', 'baking', 'burn', 'butter']...)
+
+- 25 topics. Too many?
+lda = gensim.models.ldamodel.LdaModel(dtm, num_topics=25, id2word=dictionary, passes=10, chunksize=128, random_state=10)
+
+'''
+u_mass:prefer the model close to 0. 
+c_v: [0,1], prefer bigger value.   
+Do not fully rely on the coherence score.
+'''
+print(lda_umass)
+print(lda_cv)
+-2.2833287487837315
+0.43888768907805975
+
+##### exp2:
+
+- No additional stopwords.
+- Removed all punctuations and tokens with word length. 
+- Numbers remain.
+
+def pre_process(text):
+    text = text.replace("'","")
+    tokens = nltk.word_tokenize(text)
+    tokens = [ t for t in tokens if t not in string.punctuation+"’“”'" ]
+    tokens = [ WNlemma.lemmatize(t.lower()) for t in tokens ]
+    tokens = [ t for t in tokens if t not in mystopwords ]
+    tokens = [ t for t in tokens if len(t) >= 3 ]
+    return(tokens)
+
+- Filter off any words with document frequency less than 100, or appearing in more than 70% documents.
+- Considering there are over 200k recipes, should filter tf-idf more? Or too much?
+dictionary.filter_extremes(no_below=100, no_above=0.7)
+
+Dictionary(53776 unique tokens: ['350', 'aluminum', 'bake', 'baking', 'burn']...)
+Dictionary(3072 unique tokens: ['350', 'aluminum', 'bake', 'baking', 'burn']...)
+
+- 15 topics. Too little?
+lda = gensim.models.ldamodel.LdaModel(dtm, num_topics=15, id2word=dictionary, passes=10, chunksize=128, random_state=10)
+
+'''
+u_mass:prefer the model close to 0. 
+c_v: [0,1], prefer bigger value.   
+Do not fully rely on the coherence score.
+'''
+print(lda_umass)
+print(lda_cv)
+-1.9039208355178339
+0.4945125297358912
+
+Topics:
+1) main course, chicken
+2) oven baked, main course
+3) boiled, appetisers
+4) baking, pastry, dessert
+5) vegetables
+6) meat, pasta
+7) cheesy bread, pizza, sandwich
+8) recipe steps???
+9) salad
+10) dough, tortila, baking
+11) potato, roast
+12) blended, smoothies
+13) microwave, food to keep
+14) grilled, steaks, bbq, burger
+15) turkey, marinate, seasonal/holiday feast
