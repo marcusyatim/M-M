@@ -36,6 +36,10 @@ print(lda_cv)
 -2.2833287487837315
 0.43888768907805975
 
+Topics: Not Considered
+
+Comments: Not enough pre-processing done.
+
 ##### exp2:
 
 - No additional stopwords.
@@ -72,18 +76,96 @@ print(lda_cv)
 0.4945125297358912
 
 Topics:
-1) main course, chicken
-2) oven baked, main course
-3) boiled, appetisers
-4) baking, pastry, dessert
-5) vegetables
-6) meat, pasta
-7) cheesy bread, pizza, sandwich
-8) recipe steps???
-9) salad
-10) dough, tortila, baking
-11) potato, roast
-12) blended, smoothies
-13) microwave, food to keep
-14) grilled, steaks, bbq, burger
-15) turkey, marinate, seasonal/holiday feast
+1) Main course, chicken
+2) Oven baked, main course
+3) Boiled, appetisers
+4) Baking, pastry, dessert
+5) Vegetables
+6) Meat, pasta
+7) Cheesy bread, pizza, sandwich
+8) Recipe steps???
+9) Salad
+10) Dough, tortila, baking
+11) Potato, roast
+12) Blended, smoothies
+13) Microwave, food to keep
+14) Grilled, steaks, bbq, burger
+15) Turkey, marinate, seasonal/holiday feast
+
+Comments: Data preprocessing seems good, even though no stopwords used.
+Topics seems alright with the exception of topic 8.
+
+##### exp3:
+
+- Added in lots of stopwords. Mostly to account for the weird topic 8 from exp2.
+- All other experiment designs remain similar to exp2.
+
+Dictionary(53753 unique tokens: ['350', 'aluminum', 'bake', 'baking', 'burn']...)
+Dictionary(3049 unique tokens: ['350', 'aluminum', 'bake', 'baking', 'burn']...)
+
+'''
+u_mass:prefer the model close to 0. 
+c_v: [0,1], prefer bigger value.   
+Do not fully rely on the coherence score.
+'''
+print(lda_umass)
+print(lda_cv)
+-2.240728339917223
+0.47745641348478673
+
+Topics:
+1) Pasta, Italian
+2) Main course, chicken, beef, fish
+3) Baking, cake
+4) Baking, bread
+5) Baking, pastry
+6) Oven baked, dishes
+7) Blended, smoothies, yoghurt, fruits, salad
+8) Cheesy, tomato, dishes
+9) Vegetable dishes
+10) Tortilla, salsa
+11) Citrus baked goodies
+12) Potato based dishes
+13) Meat dishes
+14) Glazed ham???
+15) Burger, bun, patty
+
+Comments: Really like the topics extracted, quite easy to defined. Except for topic 14.
+
+##### exp4:
+
+- Added in more stopwords. Mostly to account for the weird topic 14 from exp3.
+- All other experiment designs remain similar to exp2,3.
+
+Dictionary(53735 unique tokens: ['350', 'aluminum', 'bake', 'baking', 'burn']...)
+Dictionary(3031 unique tokens: ['350', 'aluminum', 'bake', 'baking', 'burn']...)
+
+'''
+u_mass:prefer the model close to 0. 
+c_v: [0,1], prefer bigger value.   
+Do not fully rely on the coherence score.
+'''
+print(lda_umass)
+print(lda_cv)
+-2.0832374492307606
+0.48976501475294776
+
+Topics:
+1) General cooking methods
+2) Baking, sweets
+3) Baking, dough
+4) Baking, cheesy dishes
+5) Roasts, vegetables, main course
+6) Oven-baked dishes
+7) Rice dishes, chicken, fish
+8) Cold dishes, instant meals
+9) Salad
+10) Citrus drinks, desserts
+11) Pasta
+12) Burrito, bean, beef, tortila
+13) Pork chops
+14) Marinates
+15) Potato based dishes
+
+Comments: Even though topics have proper Top-N words, but hard to define them and topics
+are quite vague.
