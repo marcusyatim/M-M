@@ -31,7 +31,7 @@ From `./code/topic-model/`:
 From `./data/topic-model/`:
 
  - `experiments.txt`: Various experiment designs are described here and their results recorded.
- - `csvs/`: Stores each experiment's CSV file that contains the recipe-topic assignments.
+ - `assignments/`: Stores each experiment's CSV file that contains the recipe-topic assignments.
  - `dicts/`: Stores each experiment's saved dictionary.
  - `dtms/`: Stores each experiment's saved DTMs.
  -  `models/`: Stores each experiment's saved LDA model.
