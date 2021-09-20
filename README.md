@@ -18,11 +18,12 @@ Topic Modeling will be performed on the dataset in order to extract the latent t
 From `./code/topic-model/`:
 
  1. `topic_model.ipynb`: Notebook that performs topic modeling using LDA algorithm on the dataset. Saves to disk the following:
-- `tokens`: Word tokens formed after pre-processing and tokenisation of dataset.
-- `dict`: Use the gensim library's corpus function to create a dictionary of the word tokens and further filter them based on tf-idf (i.e. when a word appears in many documents, it’s considered unimportant. When the word is relatively unique and appears in few documents, it’s important).
-- `dtm`: Document Term Matrix. A vector representation of the documents.
-- `lda`:The LDA model.
-- `pyLDAvis`: A neat and handy visualisation of the topic modeling. Saved as html.
+
+> - `tokens`: Word tokens formed after pre-processing and tokenisation of dataset.
+> - `dict`: Use the gensim library's corpus function to create a dictionary of the word tokens and further filter them based on tf-idf (i.e. when a word appears in many documents, it’s considered unimportant. When the word is relatively unique and appears in few documents, it’s important).
+> - `dtm`: Document Term Matrix. A vector representation of the documents.
+> - `lda`: The LDA model.
+> - `pyLDAvis`: A neat and handy visualisation of the topic modeling. Saved as html.
 
  2.  `topic_assignment.ipynb`: After topic modeling has been performed and we have a saved `model` and `dtm`, use this notebook to get the topic distribution of the recipes and to assign each recipe their topic(s). Saves to disk a new CSV file with the assignment.
 
