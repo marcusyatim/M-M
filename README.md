@@ -28,6 +28,10 @@ From `./code/topic-model/`:
 
 2. `topic_assignment.ipynb`: After topic modeling has been performed and we have a saved `model` and `dtm`, use this notebook to get the topic distribution of the recipes and to assign each recipe their topic(s). Saves to disk a new CSV file with the assignment.
 
+3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an LDA model to run, as well as an assignment CSV file. Use `requirements.txt` to install the required dependencies in a virtual environment.
+
+`requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
+
 ### Data
 
 From `./data/topic-model/`:
