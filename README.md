@@ -28,7 +28,7 @@ From `./code/topic-model/`:
 
 2. `topic_assignment.ipynb`: After topic modeling has been performed and we have a saved `model` and `dtm`, use this notebook to get the topic distribution of the recipes and to assign each recipe their topic(s). Saves to disk an `assignment` CSV file.
 
-3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an LDA model to run, as well as an assignment CSV file.
+3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an LDA model to run, as well as an assignment CSV file. If your virtual environemnt does not have NLTK wordnet downloaded, suggest going into this code and uncommenting the line `nltk.download('wordnet')` to download.
 
 `requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
 
