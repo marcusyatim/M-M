@@ -2,10 +2,10 @@
 This python script asks the user to input their likes and dislikes and matches those to the closest recipes.
 This script is to run locally on the terminal.
 '''
+import json
 import nltk
-import string
-import gensim
 import pandas as pd
+import string
 #nltk.download('wordnet')
 
 from nltk.corpus import stopwords
@@ -20,28 +20,28 @@ def receive_input():
     dislikes = []
     while i:
         if i == 1:
-            like = input("What would you like to see in a recipe today? ")
+            like = input("\nWhat type of recipe would you like today? (E.g. quick/easy)\n- ")
             likes.append(like.title())
             i += 1
-        like = input("Anything else? Type 'Done' when you are finished. ")
+        like = input("Anything else? Type 'Done' when you are finished.\n- ")
         if like.title() == 'Done':
             break
         likes.append(like.title())
     print ("\nExcellent, you are interested in the following:\n" + str(likes))
     while i:
         if i == 2:
-            dislike = input("\nIs there anything you don't want to see in a recipe? (Type 'No' to skip) ")
-            if dislike.title() == 'No':
+            dislike = input("\nIs there anything you don't want to see in a recipe? (E.g. spicy) (Type 'Done' to skip)\n- ")
+            if dislike.title() == 'Done':
                 print ("\nGotcha.")
                 break
             dislikes.append(dislike.title())
             i += 1
-        dislike = input("Anything else? Type 'Done' when you are finished. ")
+        dislike = input("Anything else? Type 'Done' when you are finished.\n- ")
         if dislike.title() == 'Done':
             break
         dislikes.append(dislike.title())
     if len(dislikes) != 0:
-        print ("Gotcha, so you would like to avoid the following:\n" + str(dislikes))
+        print ("\nGotcha, so you would like to avoid the following:\n" + str(dislikes))
 
     return likes, dislikes
 
@@ -93,17 +93,6 @@ def wordnet(list):
                     wordnet.add(lemma)
 
     return wordnet 
-
-def create_topic_dict(exp):
-    '''
-    This function creates and returns a dictionary with the topics (1-15) as the keys.
-    The values will be the top N words of each topic.
-    '''
-    # Load LDA model
-    lda = gensim.models.ldamodel.LdaModel.load('../../data/topic-model/models/' + exp + '.model')
-    topic_dict = {'Topic ' + str((i+1)): [token for token, score in lda.show_topic(i, topn=30)] for i in range(0, lda.num_topics)}
-
-    return topic_dict
 
 def match_topics(likes, dislikes, topic_dict):
     '''
@@ -185,7 +174,7 @@ def main():
     dislikes_wordnet = wordnet(dislikes_tokens)
 
     # Get topic dictionary
-    topic_dict = create_topic_dict(exp)
+    topic_dict = json.load(open('../../data/topic-model/topN/' + exp + '.json'))
 
     # Match likes and dislikes to the most likely topic(s)
     likely_topics = match_topics(likes_wordnet, dislikes_wordnet, topic_dict)
