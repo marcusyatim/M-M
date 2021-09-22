@@ -28,7 +28,9 @@ From `./code/topic-model/`:
 
 2. `topic_assignment.ipynb`: After topic modeling has been performed and we have a saved `model` and `dtm`, use this notebook to get the topic distribution of the recipes and to assign each recipe their topic(s). Saves to disk an `assignment` CSV file.
 
-3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an LDA model to run, as well as an assignment CSV file. If your virtual environemnt does not have NLTK wordnet downloaded, suggest going into this code and uncommenting the line `nltk.download('wordnet')` to download.
+3. `topic_topN.ipynb`: Once we have our topics, we want to look at the Top N words for each topic. We also want to expand these words by including their synonyms, hyponyms, hypernyms, meronyms, holonyms & entailments. Saves to disk a `topN` JSON file.
+
+3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an `assignment` CSV file and a `topN` JSON file. If your virtual environemnt does not have NLTK wordnet downloaded, suggest going into this code and uncommenting the line `nltk.download('wordnet')` to download.
 
 `requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
 
@@ -36,9 +38,9 @@ From `./code/topic-model/`:
 
 From `./data/topic-model/`:
 
-(Note: experiment files that are not used in the final model are not included in the repo. For brevity sake and to reduce size of repo.)
+(Note: experiment files that are not used in the final model are not included in the repo. Done for brevity sake and to reduce size of repo.)
 
-Current experiment version used in model: exp3.
+Current experiment version used in model: `exp3`.
  
 - `experiments.txt`: Various experiment designs are described here and their results recorded.
 - `assignments/`: Stores each experiment's CSV file that contains the recipe-topic assignments.
@@ -48,3 +50,4 @@ Current experiment version used in model: exp3.
 - `pyLDAvis/`: Stores each experiment's visualisation html file.
 - `stopwords/`: Stores each experiment's stopwords (if any). Used in the token pre-processing step in `topic_model.ipynb`.
 - `tokens/`: Stores each experiment's word tokens.
+- `topN/`: Stores each experiment's topics' expanded top N words.
