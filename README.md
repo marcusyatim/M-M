@@ -30,9 +30,10 @@ From `./code/topic-model/`:
 
 3. `topic_topN.ipynb`: Once we have our topics, we want to look at the Top N words for each topic. We also want to expand these words by including their synonyms, hyponyms, hypernyms, meronyms, holonyms & entailments. Saves to disk a `topN` JSON file.
 
-3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an `assignment` CSV file and a `topN` JSON file. If your virtual environemnt does not have NLTK wordnet downloaded, suggest going into this code and uncommenting the line `nltk.download('wordnet')` to download.
+3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an `assignment` CSV file and a `topN` JSON file.
 
 `requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
+`setup.py`: After installing the dependencies, run this to download the packages required. Run `python setup.py` in your shell. 
 
 ### Data
 
