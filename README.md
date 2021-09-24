@@ -71,7 +71,7 @@ Found in `./code/document-similarity/`:
 2. `related_recipes_terminal.py`: A python script that asks the user to input a foodnetwork.com recipe url, performs web scrapping on it and uses the WMD model to match the information to the closest related recipes from the dataset. Requires a `wmd.model` file and the dataset CSV file.
 
 > - Note 1: Depending if foodnetwork.com changes or modifies their website, this program may or may not work thereafter. Works as of Sep 2021.
-> - Note 2: The program takes extremely, EXTREMELY long to run (>2hrs). This is because using WMD and word vectors is not a very time efficient method. Furthermore, the dataset being compared with is huge, hence, the long wait. However, results are still satisfactory. Future research can be done to identify another method (neural networks perhaps?).
+> - Note 2: The program takes extremely, EXTREMELY long to run (>2hrs). This is because using WMD and word vectors is not a very time efficient algorithm. Furthermore, the dataset being compared with is huge, hence, the long wait. However, results are still satisfactory. Future research can be done to identify another method (neural networks perhaps?).
 > - Note 3: Due to the very impractical long time required to execute the program fully to obtain the results, this program will only be used as an experimental proof and will not be included in the final product. 
 > - Note 4: Attached is an example screenshot of the terminal output of the program:
 ![2021-09-24 21_49_55-Window](https://user-images.githubusercontent.com/19281828/134685571-b73ad552-98f0-463a-a572-8b777918eeb3.png)
