@@ -3,10 +3,7 @@ Author: Eu Jin Marcus Yatim
 This python script asks the user to input their likes and dislikes and matches those to the closest recipes.
 This script is to run locally on the terminal.
 Requires NLTK packages: stopwords, punkt and wordnet. Run setup.py to install them.
-<<<<<<< HEAD
 Requires an 'assignment' CSV file and a 'topN' JSON file.
-=======
->>>>>>> 39e9dd8f4bbc3bd20d7d77884aac5593136a5332
 '''
 import json
 import nltk
