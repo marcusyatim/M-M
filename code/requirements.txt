@@ -1,3 +1,4 @@
+beautifulsoup4
 gensim==3.6.0
 json
 nltk
