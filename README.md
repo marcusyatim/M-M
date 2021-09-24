@@ -2,6 +2,13 @@
 
 Note: Some large files in data folder. Suggest to install `git lfs` @ https://git-lfs.github.com/ in order to push/pull large files on GitHub.
 
+## Design Documet can be found:
+https://docs.google.com/document/d/1SiGdW-KyBOfv1hIu98c9QaLR8l2s-45GLjP6WuIG5GM/edit?usp=sharing
+
+## Google Docs reporsitory:
+https://drive.google.com/drive/folders/1N6b9bTr9C875M15SXwRs2xP_hwzjX6OR?usp=sharing
+
+
 If you are working on a new environment, suggest running the following files to ensure all required libraries and packages to run the program are included:
 
 > Found in `./code/`:
