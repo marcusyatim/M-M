@@ -8,6 +8,7 @@ Requires a 'wmd.model' file and the dataset CSV file.
 '''
 import gensim
 import nltk
+import pandas as pd
 import requests
 
 from bs4 import BeautifulSoup
