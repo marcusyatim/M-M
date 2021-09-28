@@ -44,6 +44,8 @@ Found in `./code/topic-model/`:
 3. `topic_topN.ipynb`: Once we have our topics, we want to look at the Top N words for each topic. We also want to expand these words by including their synonyms, hyponyms, hypernyms, meronyms, holonyms & entailments. Saves to disk a `topN` JSON file.
 
 3. `topic_matching_terminal.py`: A python script that asks the user to input their likes and dislikes and matches those to the closest recipes. Requires an `assignment` CSV file and a `topN` JSON file.
+> - Note: Attached is an example screenshot of the terminal output of the program:
+![photo_2021-09-22_12-03-50](https://user-images.githubusercontent.com/19281828/135064043-53a9dd20-ff1e-4f7b-a72f-193813701576.jpg)
 
 ### Data
 
