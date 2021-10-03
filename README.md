@@ -2,10 +2,10 @@
 
 Note: Some large files in data folder. Suggest to install `git lfs` @ https://git-lfs.github.com/ in order to push/pull large files on GitHub.
 
-## Design Documet can be found:
+## Design Document can be found:
 https://docs.google.com/document/d/1SiGdW-KyBOfv1hIu98c9QaLR8l2s-45GLjP6WuIG5GM/edit?usp=sharing
 
-## Google Docs reporsitory:
+## Google Docs repository:
 https://drive.google.com/drive/folders/1N6b9bTr9C875M15SXwRs2xP_hwzjX6OR?usp=sharing
 
 
