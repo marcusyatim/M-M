@@ -2,18 +2,17 @@
 
 Note: Some large files in data folder. Suggest to install `git lfs` @ https://git-lfs.github.com/ in order to push/pull large files on GitHub.
 
-## Design Document can be found:
-https://docs.google.com/document/d/1SiGdW-KyBOfv1hIu98c9QaLR8l2s-45GLjP6WuIG5GM/edit?usp=sharing
-
-## Google Docs repository:
-https://drive.google.com/drive/folders/1N6b9bTr9C875M15SXwRs2xP_hwzjX6OR?usp=sharing
-
-
 If you are working on a new environment, suggest running the following files to ensure all required libraries and packages to run the program are included:
 
 > Found in `./code/`:
 > - `requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
 > - `setup.py`: After installing the dependencies, run this to download the packages required. Run `python setup.py` in your shell.
+
+## Design Document can be found:
+https://docs.google.com/document/d/1SiGdW-KyBOfv1hIu98c9QaLR8l2s-45GLjP6WuIG5GM/edit?usp=sharing
+
+## Google Docs repository:
+https://drive.google.com/drive/folders/1N6b9bTr9C875M15SXwRs2xP_hwzjX6OR?usp=sharing
 
 ## Dataset
 
@@ -32,7 +31,6 @@ Topic Modeling will be performed on the dataset in order to extract the latent t
 Found in `./code/topic-model/`:
 
 1. `topic_model.ipynb`: Notebook that performs topic modeling using LDA algorithm on the dataset. Saves to disk the following:
-
 > - `tokens`: Word tokens formed after pre-processing and tokenisation of dataset.
 > - `dict`: Use the gensim library's corpus function to create a dictionary of the word tokens and further filter them based on tf-idf (i.e. when a word appears in many documents, it’s considered unimportant. When the word is relatively unique and appears in few documents, it’s important).
 > - `dtm`: Document Term Matrix. A vector representation of the documents.
@@ -74,11 +72,9 @@ Document similarity will be performed between a target recipe and the dataset to
 Found in `./code/document-similarity/`:
 
 1. `document_similarity.ipynb`: Notebook that creates the WMD model trained on the word vectors from the dataset. Saves to disk the following:
-
 > - `wmd.model`: The WMD model. The model has been defined to retrieve the top 5 results.
 
 2. `related_recipes_terminal.py`: A python script that asks the user to input a foodnetwork.com recipe url, performs web scrapping on it and uses the WMD model to match the information to the closest related recipes from the dataset. Requires a `wmd.model` file and the dataset CSV file.
-
 > - Note 1: Depending if foodnetwork.com changes or modifies their website, this program may or may not work thereafter. Works as of Sep 2021.
 > - Note 2: The program takes extremely, EXTREMELY long to run (>2hrs). This is because using WMD and word vectors is not a very time efficient algorithm. Furthermore, the dataset being compared with is huge, hence, the long wait. However, results are still satisfactory. Future research can be done to identify another method (neural networks perhaps?).
 > - Note 3: Due to the very impractical long time required to execute the program fully to obtain the results, this program will only be used as an experimental proof and will not be included in the final product. 
@@ -90,3 +86,34 @@ Found in `./code/document-similarity/`:
 Found in `./data/document-similarity/`:
 
 - `wmd.model`: The WMD model trained on the word vectors from the dataset. The model has been defined to retrieve the top 5 results.
+
+## Transformer
+
+A transformer that takes in the text data of a recipe's steps and outputs tags for the recipe.
+
+### Code
+
+Found in `./code/transformer/`:
+
+1. `build_transformer.ipynb`: Notebook that creates the transformer and trains it on the dataset. Current built: Google Colab GPU trained on 10,000 rows from dataset. Saves to disk the following:
+> - `inp_tokenizer.pickle`: Input tokenizer, built from 'steps' column of dataset.
+> - `input_tensor.pickle`: Input tensor, built from 'steps' column of dataset.
+> - `targ_tokenizer.pickle`: Target tokenizer, built from 'tags' column of dataset.
+> - `target_tensor.pickle`: Target tensor, built from 'tags' column of dataset.
+> - `transformer.index` + `transformer.data` + `checkpoint`: Saved weights of transformer, based on current built.
+
+2. `load_transformer.py`: A python script that loads the transformer, runs it, generates the tags and returns said tags. Requires input tensor, input tokenizer, target tensor and target tokenizer. Also transformer model weights.
+
+3. `transformer_terminal.py`: A python script that asks the user to input a foodnetwork.com recipe url, performs web scrapping on it and inputs the data into the transformer to return tags for the recipe. Requires load_transformer.py.
+> - Note: Attached is an example screenshot of the terminal output of the program:
+![2021-10-05 17_55_05-Command Prompt](https://user-images.githubusercontent.com/19281828/136001743-bebb2700-bad4-4aa6-b279-4d982fba90ae.png)
+
+### Data
+
+Found in `./data/transformer/`:
+
+- `inp_tokenizer.pickle`: Input tokenizer.
+- `input_tensor.pickle`: Input tensor.
+- `targ_tokenizer.pickle`: Target tokenizer.
+- `target_tensor.pickle`: Target tensor.
+- `transformer.index` + `transformer.data` + `checkpoint`: Saved weights of transformer.
