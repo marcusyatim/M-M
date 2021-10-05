@@ -14,7 +14,7 @@ def receive_input():
     Returns the url to the target recipe as a string.
     '''
     url = input("\nEnter a url to a foodnetwork.com recipe\n- ")
-    print ("\nThe recipe from " + str(url) + " will be converted to tags")
+    print ("\nThe recipe from " + str(url) + " will be converted to tags:")
 
     return url
 
