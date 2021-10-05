@@ -5,3 +5,4 @@ nltk
 pandas
 requests
 string
+tensorflow==2.6.0
