@@ -20,7 +20,7 @@ This project will examine recipe data from Food.com – https://www.food.com.
 
 Further, data has already been crawled from said website and available on Kaggle – https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions. The dataset has over 2000,000 recipes covering eighteen years of uploads on Food.com up to 2019.
 
-Found in `./data/RAW_recipes.csv/`.
+Files used are `RAW_recipes.csv` and `RAW_interactions.csv`. To run these files in tandem with the code, download them from Kaggle and save them in the folder `./data/`.
 
 ## Topic Model
 
@@ -102,9 +102,9 @@ Found in `./code/transformer/`:
 > - `target_tensor.pickle`: Target tensor, built from 'tags' column of dataset.
 > - `transformer.index` + `transformer.data` + `checkpoint`: Saved weights of transformer, based on current built.
 
-2. `load_transformer.py`: A python script that loads the transformer, runs it, generates the tags and returns said tags. Requires input tensor, input tokenizer, target tensor and target tokenizer. Also transformer model weights.
+2. `run_transformer.py`: A python script that loads the transformer, runs it, generates the tags and returns said tags. Requires input tensor, input tokenizer, target tensor and target tokenizer. Also transformer model weights.
 
-3. `transformer_terminal.py`: A python script that asks the user to input a foodnetwork.com recipe url, performs web scrapping on it and inputs the data into the transformer to return tags for the recipe. Requires load_transformer.py.
+3. `transformer_terminal.py`: A python script that asks the user to input a foodnetwork.com recipe url, performs web scrapping on it and inputs the data into the transformer to return tags for the recipe. Requires run_transformer.py.
 > - Note: Attached is an example screenshot of the terminal output of the program:
 ![2021-10-05 17_55_05-Command Prompt](https://user-images.githubusercontent.com/19281828/136001743-bebb2700-bad4-4aa6-b279-4d982fba90ae.png)
 
@@ -117,3 +117,29 @@ Found in `./data/transformer/`:
 - `targ_tokenizer.pickle`: Target tokenizer.
 - `target_tensor.pickle`: Target tensor.
 - `transformer.index` + `transformer.data` + `checkpoint`: Saved weights of transformer.
+
+## Ratings Classification
+
+Using HuggingFace 🤗 API and taking advantage of transfer learning, a BERT model (more specifically the light-weight DistilBERT base model) was fine tuned with a custom dataset from RAW_interactions.csv to perform multi-labels classification. The classification would be the rating values of 0-5.
+
+A user inputed review will be passed into the above to automatically classify it with a rating.
+
+### Code
+
+Found in `./code/ratings-classification/`:
+
+1. `fine_tune_BERT.ipynb`: This notebook takes a custom dataset - 'RAW_interactions.csv' and preprocess the reviews and ratings columns to be usable with DistilBERT base model from Huggingface. Then fine-tune said model according to the custom dataset to perform multi-labels classification (the ratings from 0-5). Saves to disk the following:
+> - `config.json` and `tf_model.h5`: The weights of the fine-tuned model.
+
+2. `run_BERT.py`: A python script that takes in a review and runs it through the fine-tuned DistilBERT base model from Huggingface. The results from the model is then post-processed to get the rating number.
+
+3. `ratings_terminal.py`: A python script that asks the user to input a review for a recipe. The script will then automatically give a rating (from 0-5) of the recipe based on the review. Requires run_BERT.py
+> - Note: Attached are example screenshots of the terminal output of the program:
+![2021-10-19 00_55_48-Window](https://user-images.githubusercontent.com/19281828/137775227-04199d2a-3d94-423b-ab0f-9467f0a19810.png)
+![2021-10-19 00_56_29-Window](https://user-images.githubusercontent.com/19281828/137775291-de7a0372-f936-448f-98b0-9cb3e5dd1820.png)
+
+### Data
+
+Found in `./data/ratings-classification/`:
+
+- `config.json` and `tf_model.h5`: The weights of the fine-tuned model.
