@@ -11,7 +11,7 @@ def receive_input():
     This functions asks for a terminal input from the user. I.e. A review for a recipe.
     Returns the review.
     '''
-    review = input("\nEnter your review\n- ")
+    review = input("\nEnter your review for the recipe\n- ")
 
     return review
 
