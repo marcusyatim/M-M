@@ -1,7 +1,7 @@
 '''
 Author: Eu Jin Marcus Yatim
 This python script runs the transformer, generates the tags and returns said tags.
-Requires input tensor, input tokenizer, target tensor and target tokenizer. Also transformer model weights.
+Requires input tensor, input tokenizer, target tensor and target tokenizer. Also transformer model weights. From /data/transformer/
 Use build_transformer.ipynb to create the required data.
 Current built: Google Colab GPU trained on 10,000 rows from dataset.
 '''

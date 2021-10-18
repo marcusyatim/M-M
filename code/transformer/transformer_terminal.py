@@ -2,15 +2,16 @@
 Author: Eu Jin Marcus Yatim
 This python script asks the user to input a foodnetwork.com recipe url, performs web scrapping on it and inputs the data into the transformer to return tags for the recipe.
 This script is to run locally on the terminal.
-Requires load_transformer.py
+Requires run_transformer.py
 '''
-import load_transformer
+import run_transformer
 import requests
+
 from bs4 import BeautifulSoup
 
 def receive_input():
     '''
-    This functions asks for a terminal inputs from the user. I.e. A foodnetwork.com url to a target recipe that the user wants to convert to tags.
+    This functions asks for a terminal input from the user. I.e. A foodnetwork.com url to a target recipe that the user wants to convert to tags.
     Returns the url to the target recipe as a string.
     '''
     url = input("\nEnter a url to a foodnetwork.com recipe\n- ")
@@ -61,7 +62,7 @@ def main():
     preprocessed_recipe = preprocess(str(recipe_info))
 
     # Get tags
-    tags = load_transformer.getTags(preprocessed_recipe)
+    tags = run_transformer.getTags(preprocessed_recipe)
 
     print ("\n" + tags)
 
