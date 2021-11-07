@@ -25,7 +25,7 @@ def main():
     # Run BERT to get the rating of the review
     rating = run_BERT.get_results(review)
 
-    print ("\nBased on your review, the rating (from 0-5) of the recipe is: " + str(rating))
+    print ("\nBased on your review, the rating (from 1-5) of the recipe is: " + str(rating))
 
 if __name__ == '__main__':
     main()
