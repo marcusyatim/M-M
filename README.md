@@ -136,9 +136,10 @@ Found in `./code/ratings-classification/`:
 3. `ratings_terminal.py`: A python script that asks the user to input a review for a recipe. The script will then automatically give a rating (from 1-5) of the recipe based on the review. Requires run_BERT.py
 > - Note: Attached are example screenshots of the terminal output of the program:
 ![2021-11-07 15_08_52-Command Prompt](https://user-images.githubusercontent.com/19281828/140636069-c3c81882-5c9c-4c64-b7e1-5eb2f7aa06b2.png)
+![2021-11-07 15_29_06-Command Prompt](https://user-images.githubusercontent.com/19281828/140636409-4254744e-7408-4220-9f38-2a758b88b9e1.png)
 ![2021-11-07 15_14_52-Command Prompt](https://user-images.githubusercontent.com/19281828/140636073-50c13614-a670-4235-a4f3-0609fef4a6eb.png)
-![2021-11-07 15_10_24-Command Prompt](https://user-images.githubusercontent.com/19281828/140636071-16cec948-73dc-4389-b385-6e0fe6576c4d.png)
-
+![2021-11-07 15_26_49-Command Prompt](https://user-images.githubusercontent.com/19281828/140636364-aeeb0b79-f98e-4ce3-8751-ce44e6d639b3.png)
+![2021-11-07 15_27_31-Command Prompt](https://user-images.githubusercontent.com/19281828/140636366-c2685a56-62c4-4742-a1b0-64eccbde4c2b.png)
 ### Data
 
 Found in `./data/ratings-classification/`:
