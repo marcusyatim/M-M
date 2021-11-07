@@ -128,16 +128,16 @@ A user inputed review will be passed into the above to automatically classify it
 
 Found in `./code/ratings-classification/`:
 
-1. `fine_tune_BERT.ipynb`: This notebook takes a custom dataset - 'RAW_interactions.csv' and preprocess the reviews and ratings columns to be usable with DistilBERT base model from Huggingface. Then fine-tune said model according to the custom dataset to perform multi-labels classification (the ratings from 0-5). Saves to disk the following:
+1. `fine_tune_BERT.ipynb`: This notebook takes a custom dataset - 'RAW_interactions.csv' and preprocess the reviews and ratings columns to be usable with DistilBERT base model from Huggingface. Then fine-tune said model according to the custom dataset to perform multi-labels classification (the ratings from 1-5). Saves to disk the following:
 > - `config.json` and `tf_model.h5`: The weights of the fine-tuned model.
 
 2. `run_BERT.py`: A python script that takes in a review and runs it through the fine-tuned DistilBERT base model from Huggingface. The results from the model is then post-processed to get the rating number.
 
-3. `ratings_terminal.py`: A python script that asks the user to input a review for a recipe. The script will then automatically give a rating (from 0-5) of the recipe based on the review. Requires run_BERT.py
+3. `ratings_terminal.py`: A python script that asks the user to input a review for a recipe. The script will then automatically give a rating (from 1-5) of the recipe based on the review. Requires run_BERT.py
 > - Note: Attached are example screenshots of the terminal output of the program:
-![2021-10-19 00_55_48-Window](https://user-images.githubusercontent.com/19281828/137775227-04199d2a-3d94-423b-ab0f-9467f0a19810.png)
-![2021-10-19 01_00_32-Window](https://user-images.githubusercontent.com/19281828/137775726-02e295dc-7ff4-4b41-a5f9-f8840c8b0393.png)
-![2021-10-19 00_56_29-Window](https://user-images.githubusercontent.com/19281828/137775291-de7a0372-f936-448f-98b0-9cb3e5dd1820.png)
+![2021-11-07 15_08_52-Command Prompt](https://user-images.githubusercontent.com/19281828/140636069-c3c81882-5c9c-4c64-b7e1-5eb2f7aa06b2.png)
+![2021-11-07 15_14_52-Command Prompt](https://user-images.githubusercontent.com/19281828/140636073-50c13614-a670-4235-a4f3-0609fef4a6eb.png)
+![2021-11-07 15_10_24-Command Prompt](https://user-images.githubusercontent.com/19281828/140636071-16cec948-73dc-4389-b385-6e0fe6576c4d.png)
 
 ### Data
 
