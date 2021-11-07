@@ -120,7 +120,7 @@ Found in `./data/transformer/`:
 
 ## Ratings Classification
 
-Using HuggingFace 🤗 API and taking advantage of transfer learning, a BERT model (more specifically the light-weight DistilBERT base model) was fine tuned with a custom dataset from RAW_interactions.csv to perform multi-labels classification. The classification would be the rating values of 0-5.
+Using HuggingFace 🤗 API and taking advantage of transfer learning, a BERT model (more specifically the light-weight DistilBERT base model) was fine tuned with a custom dataset from RAW_interactions.csv to perform multi-labels classification. The classification would be the rating values of 1-5.
 
 A user inputed review will be passed into the above to automatically classify it with a rating.
 
