@@ -23,20 +23,20 @@ def load_bert():
     lr_scheduler = PolynomialDecay(
         initial_learning_rate=5e-5,
         end_learning_rate=0.,
-        decay_steps=13400
+        decay_steps=4020
         )
     opt = Adam(learning_rate=lr_scheduler)
     loss = CategoricalCrossentropy(from_logits=True)
 
     # Load model
-    model = TFAutoModelForSequenceClassification.from_pretrained("../../data/ratings-classification/", num_labels=6, problem_type="multi_label_classification")
+    model = TFAutoModelForSequenceClassification.from_pretrained("../../data/ratings-classification/", num_labels=5, problem_type="multi_label_classification")
     model.compile(optimizer=opt, loss=loss)
 
     return model
 
 def convert_ratings(predictions):
-    # Find the max probability value and extract the index of that value. The index corresponds to the rating value (0-5)
-    rating = tf.math.argmax(predictions, 1).numpy()[0]
+    # Find the max probability value and extract the index of that value. The index corresponds to the rating value (1-5). As such, add '1' to get actual rating value.
+    rating = tf.math.argmax(predictions, 1).numpy()[0] + 1
 
     return rating
 
@@ -60,5 +60,3 @@ def get_results(review):
     rating = convert_ratings(predictions)
 
     return rating
-
-
