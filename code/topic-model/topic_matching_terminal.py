@@ -8,7 +8,6 @@ Requires an 'assignment' CSV file and a 'topN' JSON file.
 import json
 import nltk
 import pandas as pd
-import string
 
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet as wn
@@ -18,55 +17,27 @@ def receive_input():
     This functions asks for a series of terminal inputs from the user. I.e. Likes and dislikes (if any).
     Returns the likes and dislikes.
     '''
-    i = 1
-    likes = []
-    dislikes = []
-    while i:
-        if i == 1:
-            like = input("\nWhat type of recipe would you like today? (E.g. quick/easy)\n- ")
-            likes.append(like.title())
-            i += 1
-        like = input("Anything else? Type 'Done' when you are finished.\n- ")
-        if like.title() == 'Done':
-            break
-        likes.append(like.title())
-    print ("\nExcellent, you are interested in the following:\n" + str(likes))
-    while i:
-        if i == 2:
-            dislike = input("\nIs there anything you don't want to see in a recipe? (E.g. spicy) (Type 'Done' to skip)\n- ")
-            if dislike.title() == 'Done':
-                print ("\nGotcha.")
-                break
-            dislikes.append(dislike.title())
-            i += 1
-        dislike = input("Anything else? Type 'Done' when you are finished.\n- ")
-        if dislike.title() == 'Done':
-            break
-        dislikes.append(dislike.title())
-    if len(dislikes) != 0:
-        print ("\nGotcha, so you would like to avoid the following:\n" + str(dislikes))
-
+    likes = input("\nWhat type of recipe would you like today?\n- ")
+    dislikes = input("\nIs there anything you don't want to see in a recipe? (E.g. spicy) (Type 'No' to skip)\n- ")
+    if dislikes.title() == 'No':
+        dislikes = ''
+    
     return likes, dislikes
 
-def preprocess(list):
+def preprocess(text):
     '''
-    This function takes in a list of strings (string length can vary and can be >1)
-    and tokenises each string in the list. As well as filtering out the tokens based on stopwords, punctuation and length.
-    Each token is then added to the token_list and the latter is returned.
+    This function takes in a string and tokenises each string in the list, as well as filtering out unwated tokens.
+    The tokens are then returned
     '''
     mystopwords = stopwords.words("english")
     WNlemma = nltk.WordNetLemmatizer()
-    tokens_list = []
-    for item in list:
-        tokens = nltk.word_tokenize(item)
-        tokens = [ t for t in tokens if t not in string.punctuation+"’“”'" ]
-        tokens = [ WNlemma.lemmatize(t.lower()) for t in tokens ]
-        tokens = [ t for t in tokens if t not in mystopwords ]
-        tokens = [ t for t in tokens if len(t) >= 3 ]
-        for token in tokens:
-            tokens_list.append(token)
+    tokens = nltk.word_tokenize(text)
+    tokens = [ t for t in tokens if t.isalpha() ]
+    tokens = [ WNlemma.lemmatize(t.lower()) for t in tokens ]
+    tokens = [ t for t in tokens if t not in mystopwords ]
+    tokens = [ t for t in tokens if len(t) >= 3 ]
 
-    return tokens_list
+    return tokens
 
 def wordnet(list):
     '''
@@ -143,7 +114,7 @@ def match_recipes(exp, topics):
         recipes = recipes.sort_values([topics[0], topics[1]], ascending=False)
     else:
         recipes = recipes.sort_values([topics[0], topics[1], topics[2]], ascending=False)
-    recipes = recipes['id'].head(5)
+    recipes = recipes['id'].head(3)
     for recipe in recipes:
         likely_recipes.append(recipe)
     
@@ -153,7 +124,7 @@ def recipe_links(recipes):
     '''
     This function prints out the Food.com links of the likely recipes, based on their ids.
     '''
-    print ("\nYour Top 5 recommended recipes are:")
+    print ("\nYour Top 3 recommended recipes are:")
     for recipe in recipes:
         link = "https://www.food.com/recipe/" + str(recipe)
         print (link)
