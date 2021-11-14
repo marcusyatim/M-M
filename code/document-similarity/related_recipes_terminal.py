@@ -41,7 +41,7 @@ def webscrapping(url):
 
 def preprocess(list):
     '''
-    This function takes in a list of strings (string length can vary and can be >1)
+    This function takes in a list of strings (string length can vary and can be > 1)
     and tokenises each string in the list. As well as filtering out the tokens based on stopwords, punctuation and numbers.
     Each token is then added to the token_list and the latter is returned.
     '''
@@ -50,9 +50,9 @@ def preprocess(list):
     tokens_list = []
     for item in list:
         tokens = nltk.word_tokenize(item)
+        tokens = [ t for t in tokens if t.isalpha() ]   # Remove numbers and punctuation.
         tokens = [ WNlemma.lemmatize(t.lower()) for t in tokens ]
         tokens = [ t for t in tokens if not t in mystopwords ]
-        tokens = [ t for t in tokens if t.isalpha() ]   # Remove numbers and punctuation.
         for token in tokens:
             tokens_list.append(token)
     
