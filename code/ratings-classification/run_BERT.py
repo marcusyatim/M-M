@@ -1,6 +1,6 @@
 '''
 Author: Eu Jin Marcus Yatim
-This python script takes in the review and runs it through the fine-tuned DistilBERT base model from Huggingface 🤗. The results from the model is then post-processed to get the rating number.
+This python script takes in the review and runs it through the fine-tuned DistilBERT base model from Hugging Face 🤗. The results from the model is then post-processed to get the rating number.
 Requires fine-tuned model weights from /data/ratings-classification/.
 Use fine_tune_BERT.ipynb to create the required data.
 '''
