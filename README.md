@@ -116,7 +116,7 @@ Found in `./data/transformer/`:
 
 ## Ratings Classification
 
-Using HuggingFace 🤗 API and taking advantage of transfer learning, a BERT model (more specifically the light-weight DistilBERT base model) was fine tuned with a custom dataset from RAW_interactions.csv to perform multi-labels classification. The classification would be the rating values of 1-5.
+Using Hugging Face 🤗 API and taking advantage of transfer learning, a BERT model (more specifically the lightweight DistilBERT base model) was fine tuned with a custom dataset from RAW_interactions.csv to perform multi-label classification. The classification would be the rating values of 1-5.
 
 A user inputed review will be passed into the above to automatically classify it with a rating.
 
@@ -124,7 +124,7 @@ A user inputed review will be passed into the above to automatically classify it
 
 Found in `./code/ratings-classification/`:
 
-1. `fine_tune_BERT.ipynb`: This notebook takes a custom dataset - 'RAW_interactions.csv' and preprocess the reviews and ratings columns to be usable with DistilBERT base model from Huggingface. Then fine-tune said model according to the custom dataset to perform multi-labels classification (the ratings from 1-5). Saves to disk the following:
+1. `fine_tune_BERT.ipynb`: This notebook takes a custom dataset - 'RAW_interactions.csv' and preprocess the reviews and ratings columns to be usable with DistilBERT base model from Hugging Face. Then fine-tune said model according to the custom dataset to perform multi-labels classification (the ratings from 1-5). Saves to disk the following:
 > - `config.json` and `tf_model.h5`: The weights of the fine-tuned model.
 
 2. `run_BERT.py`: A python script that takes in a review and runs it through the fine-tuned DistilBERT base model from Huggingface. The results from the model is then post-processed to get the rating number.
