@@ -35,7 +35,7 @@ Found in `./code/topic-model/`:
 > - `lda`: The LDA model.
 > - `pyLDAvis`: A neat and handy visualisation of the topic modeling. Saved as html.
 
-2. `topic_assignment.ipynb`: After topic modeling has been performed and we have a saved `model` and `dtm`, use this notebook to get the topic distribution of the recipes and to assign each recipe their topic(s). Saves to disk an `assignment` CSV file.
+2. `topic_assignment.ipynb`: After topic modeling has been performed and we have a saved `dtm` and `lda` model, use this notebook to get the topic distribution of the recipes and to assign each recipe their topic(s). Saves to disk an `assignment` CSV file.
 
 3. `topic_topN.ipynb`: Once we have our topics, we want to look at the Top N words for each topic. We also want to expand these words by including their synonyms, hyponyms, hypernyms, meronyms, holonyms & entailments. Saves to disk a `topN` JSON file.
 
@@ -53,7 +53,7 @@ Current experiment version used in model: `exp3`.
  
 - `experiments.txt`: Various experiment designs are described here and their results recorded.
 - `assignments/`: Stores each experiment's CSV file that contains the recipe-topic assignments.
-- `dtm/`: Stores each experiment's saved DTMs.
+- `dtm/`: Stores each experiment's saved DTM.
 - `lda/`: Stores each experiment's saved LDA model.
 - `pyLDAvis/`: Stores each experiment's visualisation html file.
 - `stopwords/`: Stores each experiment's stopwords (if any). Used in the token pre-processing step in `topic_model.ipynb`.
