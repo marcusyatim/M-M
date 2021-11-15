@@ -12,8 +12,8 @@ import pandas as pd
 import requests
 
 from bs4 import BeautifulSoup
-from nltk.corpus import stopwords
 from gensim.similarities import WmdSimilarity
+from nltk.corpus import stopwords
 
 def receive_input():
     '''
@@ -53,6 +53,7 @@ def preprocess(list):
         tokens = [ t for t in tokens if t.isalpha() ]   # Remove numbers and punctuation.
         tokens = [ WNlemma.lemmatize(t.lower()) for t in tokens ]
         tokens = [ t for t in tokens if not t in mystopwords ]
+        tokens = [ t for t in tokens if len(t) >= 3 ]
         for token in tokens:
             tokens_list.append(token)
     
