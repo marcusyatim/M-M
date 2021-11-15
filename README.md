@@ -77,6 +77,8 @@ Found in `./code/document-similarity/`:
 > - Note 4: Attached is an example screenshot of the terminal output of the program:
 ![2021-09-24 21_49_55-Window](https://user-images.githubusercontent.com/19281828/134685571-b73ad552-98f0-463a-a572-8b777918eeb3.png)
 
+3. `similarity_evaluation.ipynb`: Notebook that measures the Word Mover's Distance value between a sample target recipe with the model's output to evaluate their similarity.
+
 ### Data
 
 Found in `./data/document-similarity/`:
