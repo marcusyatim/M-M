@@ -141,7 +141,7 @@ Found in `./data/getRatings/`:
 
 ## Conversational UI
 
-The CUI portion of the system will utilise the top-notch NLP solution provided by Google Dialogflow ES. It will be integrated with Telegram’s bots to create a chatbot on said platform. The name of the bot is `Marcusyfoodbot`.
+The CUI portion of the system will utilise the top-notch NLP solution provided by Google Dialogflow ES. It will be integrated with Telegram’s bots to create a chatbot on said platform. The name of the bot is `marcusyfoodbot`.
 
 ### Code
 
