@@ -152,3 +152,9 @@ Found in `./code/cui/`:
 3. `getRecommendations_chatbot.py`: Similar to `getRecommendations_terminal.py` but with implementations specific for chatbot.
 4. `getTags_chatbot.py`: Similar to `getTags_terminal.py` but with implementations specific for chatbot.
 5. `getRatings_chatbot.py`: Similar to `getRatings_terminal.py` but with implementations specific for chatbot.
+
+### Data
+
+Found in `./data/cui/`:
+
+1. `Recipe-Discovery-App.zip`: The Dialogflow agent.
