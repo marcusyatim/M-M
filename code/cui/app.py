@@ -1,7 +1,6 @@
 import time
 
 from celery import Celery
-from datetime import datetime, timedelta
 from flask import Flask, request
 
 from getRatings_chatbot import getRatings
@@ -16,13 +15,25 @@ app.config.from_object("config")
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 celery.conf.update(app.config)
 
-# Define a celery asynchronous task
+# Define getTags celery asynchronous task
+@celery.task
+def celery_getTags(url):
+    tags = getTags(url)
+    return tags
+
+# Create a route for the getTags asynchronous task
+@app.route('/background_getTags', methods=['POST'])
+def background_getTags(url):
+    tags = celery_getTags.apply_async(args=[url])
+    return tags
+
+# Define getRating celery asynchronous task
 @celery.task
 def celery_getRatings(review):
     rating = getRatings(review)
     return rating
 
-# Create a route for the asynchronous task
+# Create a route for the getRating asynchronous task
 @app.route('/background_getRatings', methods=['POST'])
 def background_getRatings(review):
     rating = celery_getRatings.apply_async(args=[review])
@@ -61,8 +72,29 @@ def webhook():
     elif query_result.get('action') == 'get.tags.url':
         url = str(query_result.get('parameters').get('url'))
         print (url)
-        tags = getTags(url)
-        fulfillmentText = tags
+        tags = background_getTags(url)
+
+        # Delay time by 4 secs (Dialogflow webhook will timeout after 5 secs)
+        time.sleep(4)
+        print (tags.state)
+        if tags.state == 'PENDING':
+            followupEvent = 'pending_tags'
+        elif tags.state == 'SUCCESS':
+            fulfillmentText = str(tags.info)
+    elif query_result.get('action') == 'get.tags.pending1':
+        time.sleep(4)
+        print (tags.state)
+        if tags.state == 'PENDING':
+            followupEvent = 'pending_tags'
+        elif tags.state == 'SUCCESS':
+            fulfillmentText = str(tags.info)
+    elif query_result.get('action') == 'get.tags.pending2':
+        time.sleep(4)
+        print (tags.state)
+        if tags.state == 'PENDING':
+            fulfillmentText = "Timeout error"
+        elif tags.state == 'SUCCESS':
+            fulfillmentText = str(tags.info)
 
     # Get ratings
     elif query_result.get('action') == 'get.ratings':
@@ -71,19 +103,17 @@ def webhook():
         review = str(query_result.get('parameters').get('review'))
         print (review)
         rating = background_getRatings(review)
-
-        # Delay time by 4 secs (Dialogflow webhook will timeout after 5 secs)
         time.sleep(4)
         print (rating.state)
         if rating.state == 'PENDING':
-            followupEvent = 'pending'
+            followupEvent = 'pending_ratings'
         elif rating.state == 'SUCCESS':
             fulfillmentText = "Based on your review, the rating (from 1-5) of the recipe is: " + str(rating.info)
     elif query_result.get('action') == 'get.ratings.review.pending1':
         time.sleep(4)
         print (rating.state)
         if rating.state == 'PENDING':
-            followupEvent = 'pending'
+            followupEvent = 'pending_ratings'
         elif rating.state == 'SUCCESS':
             fulfillmentText = "Based on your review, the rating (from 1-5) of the recipe is: " + str(rating.info)
     elif query_result.get('action') == 'get.ratings.review.pending2':
