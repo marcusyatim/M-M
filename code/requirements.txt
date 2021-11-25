@@ -1,11 +1,11 @@
 beautifulsoup4
 celery==4.4.1
+flask==2.0.2
 gensim==3.6.0
-json
 nltk
 pandas
 redis==3.4.1
 requests
-string
+scikit-learn
 tensorflow==2.6.0
 transformers
