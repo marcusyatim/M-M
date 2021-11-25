@@ -1,6 +1,12 @@
 # Marcus Y Food
 
-Note: Some large files in data folder. Suggest to install `git lfs` @ https://git-lfs.github.com/ in order to push/pull large files on GitHub.
+The source code and data in this repo is meant for running locally as a testing environment.
+
+For deployment to production on Heroku with Docker, refer to the accompanying repo https://github.com/marcusyatim/M-M-deploy. 
+
+## Setup
+
+Some large files in data folder. Suggest to install `git lfs` @ https://git-lfs.github.com/ in order to push/pull large files on GitHub.
 
 If you are working on a new environment, suggest running the following files to ensure all required libraries and packages to run the program are included:
 
@@ -8,9 +14,7 @@ If you are working on a new environment, suggest running the following files to 
 > - `requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
 > - `setup.py`: After installing the dependencies, run this to download the packages required. Run `python setup.py` in your shell.
 
-Other requirements include working knowledge of `Celery` and `Redis` and their installation on your local machine. The source code and data in this repo is meant for running locally as a testing environment.
-
-For deployment to production on Heroku with Docker, refer to the accompanying repo https://github.com/marcusyatim/M-M-deploy. 
+Other requirements include working knowledge of `Celery` and `Redis` and their installation on your local machine.
 
 ## Dataset
 
