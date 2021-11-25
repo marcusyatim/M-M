@@ -8,6 +8,10 @@ If you are working on a new environment, suggest running the following files to 
 > - `requirements.txt`: Stores the required dependencies to be installed in a virtual environment. Run `pip install -r requirements.txt` in your shell.
 > - `setup.py`: After installing the dependencies, run this to download the packages required. Run `python setup.py` in your shell.
 
+Other requirements include working knowledge of `Celery` and `Redis` and their installation on your local machine. The source code and data in this repo is meant for running locally as a testing environment.
+
+For deployment to production on Heroku with Docker, refer to the accompanying repo https://github.com/marcusyatim/M-M-deploy. 
+
 ## Dataset
 
 This project will examine recipe data from Food.com – https://www.food.com.
@@ -152,9 +156,4 @@ Found in `./code/cui/`:
 3. `getRecommendations_chatbot.py`: Similar to `getRecommendations_terminal.py` but with implementations specific for chatbot.
 4. `getTags_chatbot.py`: Similar to `getTags_terminal.py` but with implementations specific for chatbot.
 5. `getRatings_chatbot.py`: Similar to `getRatings_terminal.py` but with implementations specific for chatbot.
-
-### Data
-
-Found in `./data/cui/`:
-
-1. `Recipe-Discovery-App.zip`: The Dialogflow agent.
+6. `agent.zip`: The Dialogflow agent.
