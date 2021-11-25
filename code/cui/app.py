@@ -42,7 +42,7 @@ def background_getRatings(review):
 # Create a route for webhook
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook():
-    global likes, dislikes, targetTags, review, rating
+    global likes, dislikes, tags, review, rating
 
     req = request.get_json(silent=True, force=True)
     fulfillmentText = ''
@@ -81,14 +81,14 @@ def webhook():
             followupEvent = 'pending_tags'
         elif tags.state == 'SUCCESS':
             fulfillmentText = str(tags.info)
-    elif query_result.get('action') == 'get.tags.pending1':
+    elif query_result.get('action') == 'get.tags.url.pending1':
         time.sleep(4)
         print (tags.state)
         if tags.state == 'PENDING':
             followupEvent = 'pending_tags'
         elif tags.state == 'SUCCESS':
             fulfillmentText = str(tags.info)
-    elif query_result.get('action') == 'get.tags.pending2':
+    elif query_result.get('action') == 'get.tags.url.pending2':
         time.sleep(4)
         print (tags.state)
         if tags.state == 'PENDING':
