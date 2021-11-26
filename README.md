@@ -1,6 +1,6 @@
 # Marcus Y Food
 
-The source code and data in this repo is meant for running locally as a testing environment.
+The source code and data in this repo are meant for running locally as a testing environment.
 
 For deployment to production on Heroku with Docker, refer to the accompanying repo https://github.com/marcusyatim/M-M-deploy. 
 
@@ -15,6 +15,8 @@ If you are working on a new environment, suggest running the following files to 
 > - `setup.py`: After installing the dependencies, run this to download the packages required. Run `python setup.py` in your shell.
 
 Other requirements include working knowledge of `Celery` and `Redis` and their installation on your local machine.
+> - To activate a Celery worker, run `celery worker -A app.celery --loglevel=info` on a new terminal (with also the virtual environment which Celery is installed on activated). Sometimes, the above command may not work for your machine. Try, instead, `celery worker -A app.celery -P solo --loglevel=info`.
+> - To activate Redis, run `redis-server` on a separate new terminal.
 
 ## Dataset
 
